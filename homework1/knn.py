@@ -40,7 +40,7 @@ def getMajority(neighbors):
     return max(counts, key=counts.get)
 
 # calulate results
-def results(resultingData):
+def results(resultingData, k):
     total = len(resultingData)
     hit = 0
     miss = 0
@@ -51,6 +51,7 @@ def results(resultingData):
             miss += 1
     # print output
     output = {
+        "k": k,
         "total": total,
         "hit": hit,
         "miss": miss,
@@ -60,7 +61,7 @@ def results(resultingData):
     print(json.dumps(output))
 
 if __name__ == "__main__":
-    k = 9
+    k = 3
     # trainFile = "./data/example.train"
     # testFile = "./data/example.test"
     trainFile = "./data/zip.train"
@@ -83,7 +84,7 @@ if __name__ == "__main__":
         resultingData.append((trial[0], hypothesis))
     
     # calulate results
-    results(resultingData)
+    results(resultingData, k)
         
 
 
