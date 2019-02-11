@@ -1,3 +1,7 @@
+# Samuel Gbafa
+# Homework 1
+# 02/07/19
+
 from tqdm import tqdm
 import json
 
