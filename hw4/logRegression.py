@@ -17,8 +17,8 @@ def getData(trainFile):
 
 
 def initialBeta(numFeatures):
-
-    return np.matrix()
+    # return matrix with 1 column and n + 1 features
+    return np.zeros((numFeatures + 1, 1), dtype=np.int)
 
 
 def getX(data, numFeatures):
@@ -28,8 +28,13 @@ def getX(data, numFeatures):
     # keep n cols
     return x[::, :numFeatures + 1]
 
-def probOfX(xi, beta):
-    return None
+
+def getY(data, numFeatures):
+    y = np.copy(data)
+    # get last column
+    last = y.shape[1]
+    # keep n cols
+    return y[::, last - 1:]
 
 def gradientLogBeta(x, y, beta):
     # 
@@ -74,21 +79,20 @@ if __name__ == "__main__":
 
     # program params
     numFeatures = 1
+    interations = 10
 
-    # math params
-    alpha = 1
+    # regression params
+    alpha = 1e-7
     
     # initialize beta
     seedBeta = initialBeta(numFeatures)
 
     # get training data
     x = getX(trainingData, numFeatures)
+    y = getY(trainingData, numFeatures)
 
-    print(x[:2])
-    print(trainingData[:2])
-    
-    # # gradient decent
-    # maxBeta = maximizeBeta(x, seedBeta)
+    # gradient decent
+    maxBeta = maximizeBeta(x, y, seedBeta, alpha, interations)
 
     # # test model
     # testX = getX(testingData, numFeatures)
