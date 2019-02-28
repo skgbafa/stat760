@@ -73,7 +73,7 @@ if __name__ == "__main__":
     # convert data to matrix
     matrixData = data.values
     # get test and training data
-    testCount = int(matrixData.shape[0] * 0)
+    testCount = int(matrixData.shape[0] * 0.2)
     trainingData = matrixData[testCount:]
     testingData = matrixData[:testCount]
 
