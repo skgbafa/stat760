@@ -12,7 +12,7 @@ def getData(trainFile):
     with open(trainFile) as csvfile:
         data = pd.read_csv(csvfile)
         data['famhist'] = data['famhist'].map({'Present': 1, 'Absent': 0})
-        data.describe()
+        print(data.describe())
     return data
 
 
@@ -37,7 +37,7 @@ def getY(data, numFeatures):
     return y[::, last - 1:]
 
 def gradientLogBeta(x, y, beta):
-    # 
+    # sum all betas in the specified region
     # return sum
     return None
 
@@ -50,9 +50,9 @@ def maximizeBeta(x, y, seedBeta, alpha, interations):
     # while not max iterations or gradient diff is small
     while currentIteration < interations:
         # get current gradient
-        gradientStep = alpha * gradientLogBeta(x, y, currentBeta)
+        # gradientStep = alpha * gradientLogBeta(x, y, currentBeta)
         # update beta
-        newBeta = currentBeta + gradientStep
+        # newBeta = currentBeta + gradientStep
         # increment
         currentBeta = newBeta
         currentIteration += 1
